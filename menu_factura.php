@@ -525,42 +525,42 @@ Precio: ${arrayProductos[pro_id].precio}`);
          if (arrayProId.length<3) {
             alert(`Debe seleccionar al menos 3 productos.\nUsted seleccionó ${arrayProId.length} productos` );
          }else{
-            // $.ajax(
-         //    {
-         //       dataType: "html",
-         //       type: "POST",
-         //       url: "invoice/create.php", // ruta donde se encuentra nuestro action que procesa la peticion XmlHttpRequest
-         //       data: "client_id=" + client_id + "&user_id=" + user_id + "&totalPagar=" + totalPagar
-         //          + "&arrayProId=" + arrayProId + "&arrayProCant=" + arrayProCant + "&arrayProPrecio=" + arrayProPrecio, //Se añade el parametro de busqueda del medico
-         //       beforeSend: function (data) {
-         //          //$('#msgEfectivo').addClass('alert alert-info').html('Espere por favor mientras se envia un comprobante al correo del cliente!');
+             $.ajax(
+             {
+                dataType: "html",
+                type: "POST",
+                url: "invoice/create.php", // ruta donde se encuentra nuestro action que procesa la peticion XmlHttpRequest
+                data: "client_id=" + client_id + "&user_id=" + user_id + "&totalPagar=" + totalPagar
+                   + "&arrayProId=" + arrayProId + "&arrayProCant=" + arrayProCant + "&arrayProPrecio=" + arrayProPrecio, //Se añade el parametro de busqueda del medico
+                beforeSend: function (data) {
+                   //$('#msgEfectivo').addClass('alert alert-info').html('Espere por favor mientras se envia un comprobante al correo del cliente!');
 
-         //       },
-         //       success: function (requestData) {//armar la tabla
-         //          //var data = requestData.data;
-         //          console.log(requestData);
-         //          //console.log(zeroFill(324, 5));
+                },
+                success: function (requestData) {//armar la tabla
+                   //var data = requestData.data;
+                   console.log(requestData);
+                   //console.log(zeroFill(324, 5));
 
-         //          if (requestData != '') {
-         //             alert('Factura No: ' + zeroFill(requestData, 9) + ' generada exitosamente!.\n Espere mientras se envia un email al cliente');
-         //             window.location.href = "menu_factura.php?client_dni="+client_dni;
+                   if (requestData != '') {
+                      alert('Factura No: ' + zeroFill(requestData, 9) + ' generada exitosamente!.\n Espere mientras se envia un email al cliente');
+                      window.location.href = "menu_factura.php?client_dni="+client_dni;
 
-         //             //Enviar el email con la factura
-         //             //enviaEmail(data.num_factura, cliente);
+                      //Enviar el email con la factura
+                      //enviaEmail(data.num_factura, cliente);
 
-         //             // guarda en el local storage cajafinal
-         //          } else {
-         //             alert('Ocurrio un error');
-         //          }
+                      // guarda en el local storage cajafinal
+                   } else {
+                      alert('Ocurrio un error');
+                   }
 
-         //       },
-         //       error: function (requestData, strError, strTipoError) {
-         //          console.log(strTipoError)
-         //       },
-         //       complete: function (requestData, exito) { //fin de la llamada ajax.
+                },
+                error: function (requestData, strError, strTipoError) {
+                   console.log(strTipoError)
+                },
+                complete: function (requestData, exito) { //fin de la llamada ajax.
 
-         //       }
-         //    });
+                }
+             });
 
          }
          
