@@ -1,9 +1,5 @@
 <?php
-include('includes/conexion.php');
-   include('includes/sesion.php');
-    if ($_SESSION['user_name']) {
-        header('location: menu_p.php');
-    }
+
 
 ?>
 <!DOCTYPE html>
